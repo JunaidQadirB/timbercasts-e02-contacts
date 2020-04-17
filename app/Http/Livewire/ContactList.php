@@ -10,15 +10,21 @@ class ContactList extends Component
     /**
      * @var Contact[]|\Illuminate\Database\Eloquent\Collection
      */
-    public $contacts;
+    protected $contacts;
+    public $viewMode;
 
-    public function mount()
+    public function mount($contacts, $viewMode)
     {
-        $this->contacts = Contact::all();
+        $this->contacts = $contacts;
+        $this->viewMode = $viewMode;
     }
 
     public function render()
     {
-        return view('livewire.contact-list');
+        $view = 'livewire.contact-grid';
+        if ($this->viewMode == 'list') {
+            $view = 'livewire.contact-list';
+        }
+        return view($view, ['contacts' => $this->contacts]);
     }
 }

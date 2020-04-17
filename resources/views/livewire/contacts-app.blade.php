@@ -1,6 +1,6 @@
 <div>
     <div class="form-group w-50 mx-auto my-5">
-        <input type="text" class="form-control" name="search" id="search" aria-describedby="searchHelp"
+        <input wire:model="searchQuery" wire:keydown.enter="search" type="text" class="form-control" name="search" id="search" aria-describedby="searchHelp"
                placeholder="Search contact by name, email or number">
         <small id="searchHelp" class="form-text text-muted"></small>
     </div>
@@ -22,10 +22,7 @@
         </div>
     </div>
 
-    @if($viewMode == 'grid')
-        @livewire('contact-grid')
-    @else
-        @livewire('contact-list')
-    @endif
+    @livewire('contact-list',['contacts' => $contacts, 'viewMode' => $viewMode], key(time()))
 
+    {{$contacts->links()}}
 </div>
