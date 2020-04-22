@@ -8,15 +8,7 @@
         <td class="text-muted">{{$contact->email}}</td>
         <td class="text-muted">{{$contact->number}}</td>
         <td>
-            <div class="d-flex justify-content-end mt-2">
-                <button class="btn btn-sm btn-link" title="Edit"><i class="fas fa-pen"></i></button>
-                <button class="btn btn-sm btn-link text-danger" title="Delete"><i
-                        class="fas fa-trash"></i>
-                </button>
-                <button class="btn btn-sm btn-link text-secondary" title="Share"><i
-                        class="fas fa-share"></i>
-                </button>
-            </div>
+            @livewire('contact-actions', ['id' => $contact->id, 'name' => $contact->fullName])
         </td>
     </tr>
 </div>

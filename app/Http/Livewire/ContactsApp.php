@@ -44,4 +44,11 @@ class ContactsApp extends Component
         $this->viewKey = time();
     }
 
+    public function deleteContact($id)
+    {
+        Contact::destroy($id);
+
+        $this->redirect('/');
+    }
+
 }

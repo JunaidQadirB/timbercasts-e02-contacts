@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::livewire('create', 'contact-form')->name('contact.create');
+Route::livewire('edit/{contact}', 'contact-form')->name('contact.edit');;
